@@ -17,19 +17,14 @@ document.addEventListener('DOMContentLoaded', function() {
         container.classList.remove('right-panel-active');
     });
 
-    // Show sign up form when "Sign Up" link is clicked
     showSignUpLink.addEventListener('click', (e) => {
         e.preventDefault();
         container.classList.add('right-panel-active');
     });
 
-    // Close modal
     closeModal.addEventListener('click', () => {
         modal.style.display = 'none';
     });
-
-    // Check if user is already logged in
-    checkLoggedIn();
 
     // Sign up form submission
     signupForm.addEventListener('submit', function(e) {
@@ -38,10 +33,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const username = document.getElementById('signupUsername').value;
         const email = document.getElementById('signupEmail').value;
         const password = document.getElementById('signupPassword').value;
-        const bankAccountName = document.getElementById('bankAccountName').value;
+        const companyName = document.getElementById('companyName').value;
         
         // Validate inputs
-        if (!username || !email || !password || !bankAccountName) {
+        if (!username || !email || !password || !companyName) {
             showModal('Error', 'Please fill in all fields');
             return;
         }
@@ -57,9 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
             username,
             email,
             password,
-            bankAccountName,
-            tasksCompleted: 0,
-            earnings: 0
+            companyName,
+            orders: []
         };
         
         localStorage.setItem(username, JSON.stringify(user));
@@ -100,17 +94,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Check if user is already logged in
-    function checkLoggedIn() {
-        if (localStorage.getItem('currentUser')) {
-            window.location.href = 'dashboard.html';
-        }
-    }
-
-    // Helper function to show modal
     function showModal(title, message) {
         document.getElementById('modalTitle').textContent = title;
         document.getElementById('modalMessage').textContent = message;
         modal.style.display = 'block';
     }
-})
+});
