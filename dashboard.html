@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dangote Cement - Order Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dangote.css">
+</head>
+<body>
+    <!-- Order Modal -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2><i class="fas fa-truck"></i> Place Your Order</h2>
+            <div id="orderForm">
+                <div class="form-group">
+                    <label for="orderQuantity">Cement Bags Quantity</label>
+                    <select id="orderQuantity" class="order-select">
+                        <option value="50">50 Bags (₦150,000)</option>
+                        <option value="100">100 Bags (₦300,000)</option>
+                        <option value="150">150 Bags (₦450,000)</option>
+                        <option value="200">200 Bags (₦600,000)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="deliveryAddress">Delivery Address</label>
+                    <textarea id="deliveryAddress" rows="3" placeholder="Enter full delivery address"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="customerName">Full Name</label>
+                    <input type="text" id="customerName" placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="customerPhone">Phone Number</label>
+                    <input type="tel" id="customerPhone" placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="customerEmail">Email Address</label>
+                    <input type="email" id="customerEmail" placeholder="Enter your email address">
+                </div>
+                <div class="delivery-note">
+                    <p><i class="fas fa-info-circle"></i> Your order will be delivered to the specified address within 3-5 working days.</p>
+                </div>
+                <button id="proceedToPay" class="submit-btn">Proceed to Payment</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <div class="logo">
+                    <img src="https://dangote.com/wp-content/uploads/2020/06/Dangote-Logo-1.png" alt="Dangote Logo">
+                    <h1>Cement Order Dashboard</h1>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="user-welcome">
+                    <span>Welcome, <span id="usernameDisplay">Customer</span>!</span>
+                    <button id="logoutBtn" class="logout-btn">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://dangote.com/wp-content/uploads/2020/06/Dangote-Cement-Bag.jpg" alt="Dangote Cement">
+            </div>
+            <div class="product-info">
+                <h2>Dangote Cement (50kg)</h2>
+                <p class="price">₦3,000 per bag</p>
+                <p class="description">Premium quality 42.5R grade cement suitable for all construction needs. Direct from Dangote factory.</p>
+                <div class="delivery-info">
+                    <p><i class="fas fa-truck"></i> Delivery to your location within 3-5 working days</p>
+                    <p><i class="fas fa-phone"></i> 24/7 Customer Support: 0700-DANGOTE</p>
+                </div>
+                <button id="orderNowBtn" class="order-btn">Order Now</button>
+            </div>
+        </div>
+
+        <div class="pricing-section">
+            <h2><i class="fas fa-tags"></i> Bulk Order Options</h2>
+            <div class="pricing-tiers">
+                <div class="pricing-tier">
+                    <h3>50 Bags</h3>
+                    <p class="tier-price">₦150,000</p>
+                    <ul class="tier-features">
+                        <li><i class="fas fa-check"></i> Ideal for small projects</li>
+                        <li><i class="fas fa-check"></i> Free delivery</li>
+                    </ul>
+                    <button class="tier-order-btn" data-bags="50">Order 50 Bags</button>
+                </div>
+                <div class="pricing-tier popular">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <h3>100 Bags</h3>
+                    <p class="tier-price">₦300,000</p>
+                    <ul class="tier-features">
+                        <li><i class="fas fa-check"></i> Best for medium projects</li>
+                        <li><i class="fas fa-check"></i> Free delivery</li>
+                        <li><i class="fas fa-check"></i> Priority processing</li>
+                    </ul>
+                    <button class="tier-order-btn" data-bags="100">Order 100 Bags</button>
+                </div>
+                <div class="pricing-tier">
+                    <h3>150 Bags</h3>
+                    <p class="tier-price">₦450,000</p>
+                    <ul class="tier-features">
+                        <li><i class="fas fa-check"></i> Great for large projects</li>
+                        <li><i class="fas fa-check"></i> Free delivery</li>
+                        <li><i class="fas fa-check"></i> Dedicated support</li>
+                    </ul>
+                    <button class="tier-order-btn" data-bags="150">Order 150 Bags</button>
+                </div>
+                <div class="pricing-tier">
+                    <h3>200 Bags</h3>
+                    <p class="tier-price">₦600,000</p>
+                    <ul class="tier-features">
+                        <li><i class="fas fa-check"></i> For commercial projects</li>
+                        <li><i class="fas fa-check"></i> Free delivery</li>
+                        <li><i class="fas fa-check"></i> VIP customer service</li>
+                    </ul>
+                    <button class="tier-order-btn" data-bags="200">Order 200 Bags</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="order-steps">
+            <h2><i class="fas fa-shopping-cart"></i> How To Order</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Select Quantity</h3>
+                    <p>Choose from 50, 100, 150 or 200 bags of Dangote Cement</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Provide Details</h3>
+                    <p>Enter your delivery address and contact information</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Make Payment</h3>
+                    <p>Complete payment through our secure payment gateway</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Receive Delivery</h3>
+                    <p>Get your cement delivered within 3-5 working days</p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="dashboard-footer">
+            <p>Dangote Cement &copy; 2023. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Contact Support</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="dangote.js"></script>
+</body>
+</html>
