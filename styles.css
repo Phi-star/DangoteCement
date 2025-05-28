@@ -17,11 +17,13 @@ body {
 
 h1 {
     font-weight: 700;
-    margin: 0;
+    margin: 10px 0;
+    color: #003366; /* Dangote blue */
 }
 
 h2 {
     text-align: center;
+    color: #003366; /* Dangote blue */
 }
 
 p {
@@ -30,14 +32,16 @@ p {
     line-height: 20px;
     letter-spacing: 0.5px;
     margin: 20px 0 30px;
+    color: #333;
 }
 
 span {
     font-size: 12px;
+    color: #666;
 }
 
 a {
-    color: #333;
+    color: #003366; /* Dangote blue */
     font-size: 14px;
     text-decoration: none;
     margin: 15px 0;
@@ -45,8 +49,8 @@ a {
 
 button {
     border-radius: 20px;
-    border: 1px solid #FF4B2B;
-    background-color: #FF4B2B;
+    border: 1px solid #003366; /* Dangote blue */
+    background-color: #003366; /* Dangote blue */
     color: #FFFFFF;
     font-size: 12px;
     font-weight: bold;
@@ -54,6 +58,12 @@ button {
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #004080; /* Darker blue on hover */
+    border-color: #004080;
 }
 
 button:active {
@@ -80,6 +90,21 @@ form {
     text-align: center;
 }
 
+.logo-container {
+    margin-bottom: 20px;
+}
+
+.logo {
+    max-width: 180px;
+    height: auto;
+}
+
+.modal-logo {
+    max-width: 120px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
 .form-footer {
     width: 100%;
     margin: 10px 0;
@@ -90,6 +115,7 @@ form {
     display: block;
     margin-bottom: 10px;
     font-size: 13px;
+    color: #003366; /* Dangote blue */
 }
 
 .signup-prompt {
@@ -99,7 +125,7 @@ form {
 }
 
 .signup-prompt a {
-    color: #FF4B2B;
+    color: #003366; /* Dangote blue */
     font-weight: 600;
     margin: 0;
 }
@@ -184,9 +210,9 @@ input {
 }
 
 .overlay {
-    background: #FF416C;
-    background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-    background: linear-gradient(to right, #FF4B2B, #FF416C);
+    background: #003366; /* Dangote blue */
+    background: -webkit-linear-gradient(to right, #003366, #004080); /* Dangote blue gradient */
+    background: linear-gradient(to right, #003366, #004080); /* Dangote blue gradient */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
@@ -252,8 +278,8 @@ input {
 }
 
 .social-container a:hover {
-    border-color: #FF4B2B;
-    color: #FF4B2B;
+    border-color: #003366; /* Dangote blue */
+    color: #003366; /* Dangote blue */
 }
 
 /* Modal styles */
@@ -316,5 +342,9 @@ input {
     .container.right-panel-active .sign-in-container,
     .container.right-panel-active .sign-up-container {
         transform: none;
+    }
+    
+    .logo {
+        max-width: 150px;
     }
 }
