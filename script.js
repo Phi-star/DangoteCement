@@ -1,102 +1,117 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const signUpButton = document.getElementById('signUp');
-    const signInButton = document.getElementById('signIn');
-    const showSignUpLink = document.getElementById('showSignUp');
-    const container = document.getElementById('container');
-    const signupForm = document.getElementById('signupForm');
     const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const showRegister = document.getElementById('showRegister');
+    const showLogin = document.getElementById('showLogin');
     const modal = document.getElementById('successModal');
     const closeModal = document.querySelector('.close');
 
-    // Toggle between sign up and sign in forms
-    signUpButton.addEventListener('click', () => {
-        container.classList.add('right-panel-active');
-    });
-
-    signInButton.addEventListener('click', () => {
-        container.classList.remove('right-panel-active');
-    });
-
-    showSignUpLink.addEventListener('click', (e) => {
+    // Toggle between login and register forms
+    showRegister.addEventListener('click', function(e) {
         e.preventDefault();
-        container.classList.add('right-panel-active');
+        loginForm.style.display = 'none';
+        registerForm.style.display = 'block';
+    });
+
+    showLogin.addEventListener('click', function(e) {
+        e.preventDefault();
+        registerForm.style.display = 'none';
+        loginForm.style.display = 'block';
     });
 
     closeModal.addEventListener('click', () => {
         modal.style.display = 'none';
     });
 
-    // Sign up form submission
-    signupForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const username = document.getElementById('signupUsername').value;
-        const email = document.getElementById('signupEmail').value;
-        const password = document.getElementById('signupPassword').value;
-        const companyName = document.getElementById('companyName').value;
-        
-        // Validate inputs
-        if (!username || !email || !password || !companyName) {
-            showModal('Error', 'Please fill in all fields');
-            return;
-        }
-        
-        // Check if username already exists
-        if (localStorage.getItem(username)) {
-            showModal('Error', 'Username already exists');
-            return;
-        }
-        
-        // Save user data to localStorage
-        const user = {
-            username,
-            email,
-            password,
-            companyName,
-            orders: []
-        };
-        
-        localStorage.setItem(username, JSON.stringify(user));
-        
-        // Save list of users
-        let users = JSON.parse(localStorage.getItem('users')) || [];
-        users.push(username);
-        localStorage.setItem('users', JSON.stringify(users));
-        
-        // Show success message
-        showModal('Success!', 'Account created successfully. You can now login.');
-        
-        // Reset form
-        signupForm.reset();
-        
-        // Switch to login form
-        container.classList.remove('right-panel-active');
-    });
+    // Register form submission
+    if (registerForm) {
+        registerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const company = document.getElementById('reg-company').value;
+            const email = document.getElementById('reg-email').value;
+            const phone = document.getElementById('reg-phone').value;
+            const password = document.getElementById('reg-password').value;
+            const confirmPassword = document.getElementById('reg-confirm').value;
+            
+            // Validate inputs
+            if (!company || !email || !phone || !password || !confirmPassword) {
+                showModal('Error', 'Please fill in all fields');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                showModal('Error', 'Passwords do not match');
+                return;
+            }
+            
+            // Check if email already exists
+            if (localStorage.getItem(email)) {
+                showModal('Error', 'Email already registered');
+                return;
+            }
+            
+            // Save user data to localStorage
+            const user = {
+                company,
+                email,
+                phone,
+                password,
+                orders: []
+            };
+            
+            localStorage.setItem(email, JSON.stringify(user));
+            
+            // Save list of users
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            users.push(email);
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            // Show success message
+            showModal('Success!', 'Account created successfully. You can now login.');
+            
+            // Reset form
+            registerForm.reset();
+            
+            // Switch to login form
+            loginForm.style.display = 'block';
+            registerForm.style.display = 'none';
+        });
+    }
 
     // Login form submission
-    loginForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const username = document.getElementById('loginUsername').value;
-        const password = document.getElementById('loginPassword').value;
-        
-        // Check if user exists
-        const user = JSON.parse(localStorage.getItem(username));
-        
-        if (user && user.password === password) {
-            // Save current user session
-            localStorage.setItem('currentUser', username);
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            // Redirect to dashboard
-            window.location.href = 'dashboard.html';
-        } else {
-            showModal('Error', 'Invalid username or password. Please try again.');
-        }
-    });
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Check if user exists
+            const user = JSON.parse(localStorage.getItem(email));
+            
+            if (user && user.password === password) {
+                // Save current user session
+                localStorage.setItem('currentUser', email);
+                
+                // Redirect to dashboard (you'll need to create this page)
+                window.location.href = 'dashboard.html';
+            } else {
+                showModal('Error', 'Invalid email or password. Please try again.');
+            }
+        });
+    }
 
     function showModal(title, message) {
         document.getElementById('modalTitle').textContent = title;
         document.getElementById('modalMessage').textContent = message;
         modal.style.display = 'block';
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
     }
 });
