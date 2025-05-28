@@ -1,26 +1,37 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const loginForm = document.getElementById('loginForm');
-    const registerForm = document.getElementById('registerForm');
+    // Form elements
+    const loginForm = document.querySelector('#loginForm form');
+    const registerForm = document.querySelector('#registerForm form');
     const showRegister = document.getElementById('showRegister');
     const showLogin = document.getElementById('showLogin');
+    
+    // Modal elements
     const modal = document.getElementById('successModal');
     const closeModal = document.querySelector('.close');
 
-    // Toggle between login and register forms
+    // Form toggle functionality
     showRegister.addEventListener('click', function(e) {
         e.preventDefault();
-        loginForm.style.display = 'none';
-        registerForm.style.display = 'block';
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('registerForm').style.display = 'block';
     });
 
     showLogin.addEventListener('click', function(e) {
         e.preventDefault();
-        registerForm.style.display = 'none';
-        loginForm.style.display = 'block';
+        document.getElementById('registerForm').style.display = 'none';
+        document.getElementById('loginForm').style.display = 'block';
     });
 
-    closeModal.addEventListener('click', () => {
+    // Modal close functionality
+    closeModal.addEventListener('click', function() {
         modal.style.display = 'none';
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
     });
 
     // Register form submission
@@ -33,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = document.getElementById('reg-password').value;
         const confirmPassword = document.getElementById('reg-confirm').value;
         
-        // Validate inputs
+        // Validation
         if (!company || !email || !phone || !password || !confirmPassword) {
             showModal('Error', 'Please fill in all fields');
             return;
@@ -44,13 +55,12 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Check if email already exists
         if (localStorage.getItem(email)) {
             showModal('Error', 'Email already registered');
             return;
         }
         
-        // Save user data to localStorage
+        // Save user data
         const user = {
             company,
             email,
@@ -61,20 +71,16 @@ document.addEventListener('DOMContentLoaded', function() {
         
         localStorage.setItem(email, JSON.stringify(user));
         
-        // Save list of users
+        // Update users list
         let users = JSON.parse(localStorage.getItem('users')) || [];
         users.push(email);
         localStorage.setItem('users', JSON.stringify(users));
         
-        // Show success message
-        showModal('Success!', 'Account created successfully. You can now login.');
-        
-        // Reset form
+        // Show success and switch to login
+        showModal('Success', 'Account created successfully!');
         registerForm.reset();
-        
-        // Switch to login form
-        loginForm.style.display = 'block';
-        registerForm.style.display = 'none';
+        document.getElementById('registerForm').style.display = 'none';
+        document.getElementById('loginForm').style.display = 'block';
     });
 
     // Login form submission
@@ -83,31 +89,20 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-        
-        // Check if user exists
         const user = JSON.parse(localStorage.getItem(email));
         
         if (user && user.password === password) {
-            // Save current user session
             localStorage.setItem('currentUser', email);
-            
-            // Redirect to dashboard
             window.location.href = 'dashboard.html';
         } else {
-            showModal('Error', 'Invalid email or password. Please try again.');
+            showModal('Error', 'Invalid email or password');
         }
     });
 
+    // Modal display function
     function showModal(title, message) {
         document.getElementById('modalTitle').textContent = title;
         document.getElementById('modalMessage').textContent = message;
         modal.style.display = 'block';
-        
-        // Close modal when clicking outside
-        window.addEventListener('click', function(event) {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
     }
 });
