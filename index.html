@@ -38,14 +38,14 @@
                 <h2>Sign In</h2>
                 <p>Access your bulk order account</p>
                 
-                <form>
+                <form id="loginFormElement">
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" placeholder="your@email.com">
+                        <input type="email" id="email" placeholder="your@email.com" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" id="password" placeholder="••••••••">
+                        <input type="password" id="password" placeholder="••••••••" required>
                         <a href="#" class="forgot-password">Forgot password?</a>
                     </div>
                     <button type="submit" class="btn-primary">Sign In</button>
@@ -56,10 +56,10 @@
                 </div>
 
                 <div class="social-auth">
-                    <button class="btn-social google">
+                    <button type="button" class="btn-social google">
                         <i class="fab fa-google"></i> Continue with Google
                     </button>
-                    <button class="btn-social linkedin">
+                    <button type="button" class="btn-social linkedin">
                         <i class="fab fa-linkedin-in"></i> Continue with LinkedIn
                     </button>
                 </div>
@@ -73,26 +73,26 @@
                 <h2>Create Account</h2>
                 <p>Register for bulk ordering privileges</p>
                 
-                <form>
+                <form id="registerFormElement">
                     <div class="form-group">
                         <label for="reg-company">Company Name</label>
-                        <input type="text" id="reg-company" placeholder="Your company name">
+                        <input type="text" id="reg-company" placeholder="Your company name" required>
                     </div>
                     <div class="form-group">
                         <label for="reg-email">Business Email</label>
-                        <input type="email" id="reg-email" placeholder="company@email.com">
+                        <input type="email" id="reg-email" placeholder="company@email.com" required>
                     </div>
                     <div class="form-group">
                         <label for="reg-phone">Phone Number</label>
-                        <input type="tel" id="reg-phone" placeholder="+234 800 000 0000">
+                        <input type="tel" id="reg-phone" placeholder="+234 800 000 0000" required>
                     </div>
                     <div class="form-group">
                         <label for="reg-password">Create Password</label>
-                        <input type="password" id="reg-password" placeholder="••••••••">
+                        <input type="password" id="reg-password" placeholder="••••••••" required>
                     </div>
                     <div class="form-group">
                         <label for="reg-confirm">Confirm Password</label>
-                        <input type="password" id="reg-confirm" placeholder="••••••••">
+                        <input type="password" id="reg-confirm" placeholder="••••••••" required>
                     </div>
                     <button type="submit" class="btn-primary">Create Account</button>
                 </form>
@@ -105,6 +105,15 @@
                     Already have an account? <a href="#" id="showLogin">Sign in here</a>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Success/Error Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Modal Title</h2>
+            <p id="modalMessage">Modal message content goes here.</p>
         </div>
     </div>
 
