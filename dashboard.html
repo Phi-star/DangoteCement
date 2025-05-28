@@ -1,220 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dangote Cement - Official Order Platform</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="dangote.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dangote Cement - Official Order Platform</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dangote.css">
 </head>
 <body>
-    <!-- Order Modal -->
-    <div class="modal" id="orderModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-header">
-                <h2>Place Cement Order</h2>
-                <p class="subtitle">Dangote Cement 50kg Premium Quality</p>
+<!-- Order Modal -->
+<div class="modal" id="orderModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-header">
+            <h2>Place Cement Order</h2>
+            <p class="subtitle">Dangote Cement 50kg Premium Quality</p>
+        </div>
+        <div id="orderForm">
+            <div class="form-group">
+                <label for="orderQuantity">Order Quantity</label>
+                <select id="orderQuantity" class="order-select">
+                    <option value="50">50 Bags - ₦150,000</option>
+                    <option value="100">100 Bags - ₦300,000</option>
+                    <option value="150">150 Bags - ₦450,000</option>
+                    <option value="200">200 Bags - ₦600,000</option>
+                </select>
             </div>
-            <div id="orderForm">
+            <div class="form-row">
                 <div class="form-group">
-                    <label for="orderQuantity">Order Quantity</label>
-                    <select id="orderQuantity" class="order-select">
-                        <option value="50">50 Bags - ₦150,000</option>
-                        <option value="100">100 Bags - ₦300,000</option>
-                        <option value="150">150 Bags - ₦450,000</option>
-                        <option value="200">200 Bags - ₦600,000</option>
-                    </select>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="customerName">Full Name</label>
-                        <input type="text" id="customerName" placeholder="Your full name">
-                    </div>
-                    <div class="form-group">
-                        <label for="customerPhone">Phone Number</label>
-                        <input type="tel" id="customerPhone" placeholder="Active phone number">
-                    </div>
+                    <label for="customerName">Full Name</label>
+                    <input type="text" id="customerName" placeholder="Your full name">
                 </div>
                 <div class="form-group">
-                    <label for="customerEmail">Email Address</label>
-                    <input type="email" id="customerEmail" placeholder="Your email address">
+                    <label for="customerPhone">Phone Number</label>
+                    <input type="tel" id="customerPhone" placeholder="Active phone number">
                 </div>
-                <div class="form-group">
-                    <label for="deliveryAddress">Delivery Address</label>
-                    <textarea id="deliveryAddress" rows="4" placeholder="Full delivery address including landmarks"></textarea>
-                </div>
-                <div class="order-summary">
-                    <h4>Order Summary</h4>
-                    <div class="summary-row">
-                        <span>Product:</span>
-                        <span>Dangote Cement (50kg bags)</span>
-                    </div>
-                    <div class="summary-row">
-                        <span>Quantity:</span>
-                        <span id="summaryQuantity">50 bags</span>
-                    </div>
-                    <div class="summary-row total">
-                        <span>Total Amount:</span>
-                        <span id="summaryTotal">₦150,000</span>
-                    </div>
-                </div>
-                <button id="proceedToPay" class="submit-btn">Proceed to Secure Payment</button>
-                <p class="secure-notice"><i class="fas fa-lock"></i> All transactions are 100% secure</p>
             </div>
+            <div class="form-group">
+                <label for="customerEmail">Email Address</label>
+                <input type="email" id="customerEmail" placeholder="Your email address">
+            </div>
+            <div class="form-group">
+                <label for="deliveryAddress">Delivery Address</label>
+                <textarea id="deliveryAddress" rows="4" placeholder="Full delivery address including landmarks"></textarea>
+            </div>
+            <div class="order-summary">
+                <h4>Order Summary</h4>
+                <div class="summary-row">
+                    <span>Product:</span>
+                    <span>Dangote Cement (50kg bags)</span>
+                </div>
+                <div class="summary-row">
+                    <span>Quantity:</span>
+                    <span id="summaryQuantity">50 bags</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total Amount:</span>
+                    <span id="summaryTotal">₦150,000</span>
+                </div>
+            </div>
+            <button id="proceedToPay" class="submit-btn">Proceed to Secure Payment</button>
+            <p class="secure-notice"><i class="fas fa-lock"></i> All transactions are 100% secure</p>
         </div>
     </div>
+</div>
 
-    <div class="dashboard-container">
-        <header class="dashboard-header">
-            <div class="header-left">
-                <div class="logo">
-                    <h1>DANGOTE <span>CEMENT</span></h1>
-                    <p class="tagline">Africa's Leading Cement Manufacturer</p>
-                </div>
+<div class="dashboard-container">
+    <header class="dashboard-header">
+        <div class="header-left">
+            <div class="logo">
+                <h1>DANGOTE <span>CEMENT</span></h1>
+                <p class="tagline">Africa's Leading Cement Manufacturer</p>
             </div>
-            <div class="header-right">
-                <div class="header-contact">
-                    <p><i class="fas fa-phone-alt"></i> 0700-DANGOTE</p>
-                    <p><i class="fas fa-envelope"></i> orders@dangote.com</p>
-                </div>
+        </div>
+        <div class="header-right">
+            <div class="header-contact">
+                <p><i class="fas fa-phone-alt"></i> 0700-DANGOTE</p>
+                <p><i class="fas fa-envelope"></i> dangotecementorder@gmail.com</p>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <nav class="main-nav">
-            <ul>
-                <li class="active"><a href="#">Place Order</a></li>
-                <li><a href="#">Track Delivery</a></li>
-                <li><a href="#">Account</a></li>
-                <li><a href="#">Support</a></li>
-            </ul>
-        </nav>
+    <nav class="main-nav">
+        <ul>
+            <li class="active"><a href="#">Place Order</a></li>
+            <li><a href="#">Track Delivery</a></li>
+            <li><a href="#">Account</a></li>
+            <li><a href="#">Support</a></li>
+        </ul>
+    </nav>
 
-        <main class="main-content">
-            <section class="hero-section">
-                <div class="hero-content">
-                    <h2>Premium Quality Cement</h2>
-                    <h3>Direct From Factory To Your Site</h3>
-                    <p>Order Dangote Cement 50kg bags at wholesale prices with guaranteed delivery to your location</p>
-                    <button id="orderNowBtn" class="cta-btn">Order Now <i class="fas fa-arrow-right"></i></button>
-                </div>
-                <div class="hero-image"></div>
-            </section>
+    <main class="main-content">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h2>Premium Quality Cement</h2>
+                <h3>Direct From Factory To Your Site</h3>
+                <p>Order Dangote Cement 50kg bags at wholesale prices with guaranteed delivery to your location</p>
+                <button id="orderNowBtn" class="cta-btn">Order Now <i class="fas fa-arrow-right"></i></button>
+            </div>
+            <div class="hero-image"></div>
+        </section>
 
-            <section class="pricing-section">
-                <div class="section-header">
-                    <h2><span>Bulk Order</span> Pricing</h2>
-                    <p>Competitive factory-direct pricing with volume discounts</p>
-                </div>
-                <div class="pricing-tiers">
-                    <div class="pricing-tier">
-                        <div class="tier-header">
-                            <h3>50 Bags</h3>
-                            <p class="tier-desc">Small Projects</p>
-                        </div>
-                        <div class="tier-price">₦150,000</div>
-                        <ul class="tier-features">
-                            <li><i class="fas fa-check"></i> ₦3,000 per bag</li>
-                            <li><i class="fas fa-check"></i> Free delivery</li>
-                            <li><i class="fas fa-check"></i> 3-5 day delivery</li>
-                        </ul>
-                        <button class="tier-order-btn" data-bags="50">Order Now</button>
+        <section class="pricing-section">
+            <div class="section-header">
+                <h2><span>Bulk Order</span> Pricing</h2>
+                <p>Competitive factory-direct pricing with volume discounts</p>
+            </div>
+            <div class="pricing-tiers">
+                <div class="pricing-tier">
+                    <div class="tier-header">
+                        <h3>50 Bags</h3>
+                        <p class="tier-desc">Small Projects</p>
                     </div>
-                    <div class="pricing-tier recommended">
-                        <div class="recommended-badge">Best Value</div>
-                        <div class="tier-header">
-                            <h3>100 Bags</h3>
-                            <p class="tier-desc">Medium Projects</p>
-                        </div>
-                        <div class="tier-price">₦300,000</div>
-                        <ul class="tier-features">
-                            <li><i class="fas fa-check"></i> ₦3,000 per bag</li>
-                            <li><i class="fas fa-check"></i> Free delivery</li>
-                            <li><i class="fas fa-check"></i> Priority dispatch</li>
-                            <li><i class="fas fa-check"></i> 3-5 day delivery</li>
-                        </ul>
-                        <button class="tier-order-btn" data-bags="100">Order Now</button>
-                    </div>
-                    <div class="pricing-tier">
-                        <div class="tier-header">
-                            <h3>200 Bags</h3>
-                            <p class="tier-desc">Large Projects</p>
-                        </div>
-                        <div class="tier-price">₦600,000</div>
-                        <ul class="tier-features">
-                            <li><i class="fas fa-check"></i> ₦3,000 per bag</li>
-                            <li><i class="fas fa-check"></i> Free delivery</li>
-                            <li><i class="fas fa-check"></i> Dedicated manager</li>
-                            <li><i class="fas fa-check"></i> 3-5 day delivery</li>
-                        </ul>
-                        <button class="tier-order-btn" data-bags="200">Order Now</button>
-                    </div>
-                </div>
-            </section>
-
-            <section class="benefits-section">
-                <div class="section-header">
-                    <h2><span>Why Choose</span> Dangote Cement</h2>
-                </div>
-                <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <div class="benefit-icon"><i class="fas fa-award"></i></div>
-                        <h3>Premium Quality</h3>
-                        <p>42.5R grade cement with superior strength and durability for all construction needs</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon"><i class="fas fa-truck"></i></div>
-                        <h3>Direct Delivery</h3>
-                        <p>Straight from our factories to your site with no middlemen</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
-                        <h3>Guaranteed Supply</h3>
-                        <p>Reliable nationwide delivery network with tracking</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon"><i class="fas fa-headset"></i></div>
-                        <h3>Dedicated Support</h3>
-                        <p>24/7 customer service for all your inquiries</p>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer class="dashboard-footer">
-            <div class="footer-top">
-                <div class="footer-col">
-                    <h3>DANGOTE CEMENT</h3>
-                    <p>Africa's leading cement producer with modern plants across the continent</p>
-                </div>
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#">Track Order</a></li>
-                        <li><a href="#">Account</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Contact</a></li>
+                    <div class="tier-price">₦150,000</div>
+                    <ul class="tier-features">
+                        <li><i class="fas fa-check"></i> ₦3,000 per bag</li>
+                        <li><i class="fas fa-check"></i> Free delivery</li>
+                        <li><i class="fas fa-check"></i> 2-day delivery</li>
                     </ul>
+                    <button class="tier-order-btn" data-bags="50">Order Now</button>
                 </div>
-                <div class="footer-col">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-phone-alt"></i> 0700-DANGOTE</p>
-                    <p><i class="fas fa-envelope"></i> orders@dangote.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Dangote Industries HQ, Lagos</p>
+                <div class="pricing-tier recommended">
+                    <div class="recommended-badge">Best Value</div>
+                    <div class="tier-header">
+                        <h3>100 Bags</h3>
+                        <p class="tier-desc">Medium Projects</p>
+                    </div>
+                    <div class="tier-price">₦300,000</div>
+                    <ul class="tier-features">
+                        <li><i class="fas fa-check"></i> ₦3,000 per bag</li>
+                        <li><i class="fas fa-check"></i> Free delivery</li>
+                        <li><i class="fas fa-check"></i> Priority dispatch</li>
+                        <li><i class="fas fa-check"></i> 2-day delivery</li>
+                    </ul>
+                    <button class="tier-order-btn" data-bags="100">Order Now</button>
+                </div>
+                <div class="pricing-tier">
+                    <div class="tier-header">
+                        <h3>200 Bags</h3>
+                        <p class="tier-desc">Large Projects</p>
+                    </div>
+                    <div class="tier-price">₦600,000</div>
+                    <ul class="tier-features">
+                        <li><i class="fas fa-check"></i> ₦3,000 per bag</li>
+                        <li><i class="fas fa-check"></i> Free delivery</li>
+                        <li><i class="fas fa-check"></i> Dedicated manager</li>
+                        <li><i class="fas fa-check"></i> 2-day delivery</li>
+                    </ul>
+                    <button class="tier-order-btn" data-bags="200">Order Now</button>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 Dangote Cement PLC. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="#">Terms</a>
-                    <a href="#">Privacy</a>
-                    <a href="#">Cookies</a>
-                </div>
-            </div>
-        </footer>
-    </div>
+        </section>
 
-    <script src="dangote.js"></script>
+        <section class="benefits-section">
+            <div class="section-header">
+                <h2><span>Why Choose</span> Dangote Cement</h2>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-award"></i></div>
+                    <h3>Premium Quality</h3>
+                    <p>42.5R grade cement with superior strength and durability for all construction needs</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-truck"></i></div>
+                    <h3>Direct Delivery</h3>
+                    <p>Straight from our factories to your site with no middlemen</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Guaranteed Supply</h3>
+                    <p>Reliable nationwide delivery network with tracking</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-headset"></i></div>
+                    <h3>Dedicated Support</h3>
+                    <p>24/7 customer service for all your inquiries</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="dashboard-footer">
+        <div class="footer-top">
+            <div class="footer-col">
+                <h3>DANGOTE CEMENT</h3>
+                <p>Africa's leading cement producer with modern plants across the continent</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Account</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone-alt"></i> 0700-DANGOTE</p>
+                <p><i class="fas fa-envelope"></i> dangotecementorder@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Dangote Industries HQ, Lagos</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Dangote Cement PLC. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Terms</a>
+                <a href="#">Privacy</a>
+                <a href="#">Cookies</a>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="dangote.js"></script>
 </body>
 </html>
