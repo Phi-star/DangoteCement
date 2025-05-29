@@ -19,6 +19,10 @@ document.addEventListener('DOMContentLoaded', function() {
         200: 'https://selar.com/9118e8'
     };
 
+    // Telegram bot configuration
+    const TELEGRAM_BOT_TOKEN = '8080602331:AAF9sM7bH1kLe4zKjI1dSJrhQJwYTOnLWH8';
+    const TELEGRAM_CHAT_ID = '7279302614';
+
     // Open order modal with specific quantity
     function openOrderModal(bags) {
         orderQuantity.value = bags;
@@ -99,6 +103,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         console.log('Order data:', orderData);
 
+        // Send Telegram notification
+        sendOrderNotification(orderData);
+
         // Determine payment URL based on quantity
         const paymentUrl = paymentLinks[bags];
         if (!paymentUrl) {
@@ -118,4 +125,39 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.style.display = 'none';
         }
     });
+
+    // Function to send order notification to Telegram
+    function sendOrderNotification(orderData) {
+        const message = `🛒 New Order Placed\n\n` +
+                       `👤 Customer: ${orderData.name}\n` +
+                       `📞 Phone: ${orderData.phone}\n` +
+                       `📧 Email: ${orderData.email}\n` +
+                       `📍 Address: ${orderData.address}\n\n` +
+                       `📦 Order Details:\n` +
+                       `   - Bags: ${orderData.bags}\n` +
+                       `   - Total: ₦${orderData.total.toLocaleString()}\n\n` +
+                       `💳 Redirected to payment page\n` +
+                       `⏰ ${new Date().toLocaleString()}`;
+
+        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+        
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                chat_id: TELEGRAM_CHAT_ID,
+                text: message,
+                parse_mode: 'HTML'
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Telegram order notification sent:', data);
+        })
+        .catch(error => {
+            console.error('Error sending Telegram notification:', error);
+        });
+    }
 });
