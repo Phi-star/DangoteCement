@@ -34,30 +34,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.auth-left::before {
-    content: "";
-    position: absolute;
-    top: -50px;
-    right: -50px;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.auth-left::after {
-    content: "";
-    position: absolute;
-    bottom: -80px;
-    left: -30px;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
 }
 
 .logo {
@@ -66,10 +42,8 @@ body {
     margin-bottom: 2rem;
 }
 
-.logo-square {
-    width: 40px;
-    height: 40px;
-    background-color: var(--dangote-accent);
+.logo-img {
+    height: 50px;
     margin-right: 15px;
 }
 
@@ -77,7 +51,6 @@ body {
     font-weight: 700;
     font-size: 1.5rem;
     line-height: 1.2;
-    text-transform: uppercase;
 }
 
 .auth-left h1 {
@@ -87,42 +60,40 @@ body {
 }
 
 .auth-left p {
-    font-size: 1.1rem;
-    opacity: 0.9;
     margin-bottom: 3rem;
+    opacity: 0.9;
     max-width: 80%;
 }
 
 .features {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    margin-top: auto;
 }
 
 .feature {
     display: flex;
     align-items: center;
+    margin-bottom: 1.5rem;
 }
 
 .feature i {
-    font-size: 1.2rem;
-    margin-right: 15px;
+    font-size: 1.5rem;
+    margin-right: 1rem;
     color: var(--dangote-accent);
 }
 
 .auth-right {
     flex: 1;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     padding: 2rem;
 }
 
 .auth-form {
-    background-color: var(--dangote-light);
+    background: var(--dangote-light);
     padding: 3rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     width: 100%;
     max-width: 500px;
 }
@@ -141,29 +112,26 @@ body {
 
 .form-group {
     margin-bottom: 1.5rem;
-    position: relative;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
-    color: var(--dangote-dark);
 }
 
 .form-group input {
     width: 100%;
-    padding: 12px 15px;
+    padding: 0.8rem 1rem;
     border: 1px solid var(--dangote-border);
-    border-radius: 6px;
+    border-radius: 4px;
     font-size: 1rem;
-    transition: all 0.3s ease;
+    transition: border-color 0.3s;
 }
 
 .form-group input:focus {
     outline: none;
     border-color: var(--dangote-blue);
-    box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
 }
 
 .forgot-password {
@@ -177,16 +145,15 @@ body {
 
 .btn-primary {
     width: 100%;
-    padding: 14px;
+    padding: 1rem;
     background-color: var(--dangote-blue);
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 4px;
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 1rem;
+    transition: background-color 0.3s;
 }
 
 .btn-primary:hover {
@@ -198,7 +165,7 @@ body {
     align-items: center;
     margin: 2rem 0;
     color: var(--dangote-dark);
-    opacity: 0.7;
+    opacity: 0.6;
 }
 
 .auth-divider::before,
@@ -216,102 +183,96 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 .btn-social {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid var(--dangote-border);
-    border-radius: 6px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    background-color: white;
+    padding: 0.8rem;
+    border: 1px solid var(--dangote-border);
+    border-radius: 4px;
+    background: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.btn-social:hover {
-    border-color: var(--dangote-blue);
-    color: var(--dangote-blue);
+.btn-social i {
+    margin-right: 0.8rem;
+    font-size: 1.2rem;
 }
 
-.btn-social.google i {
-    color: #DB4437;
+.btn-social.google:hover {
+    background-color: #f5f5f5;
 }
 
-.btn-social.linkedin i {
-    color: #0077B5;
+.btn-social.linkedin {
+    color: white;
+    background-color: #0077b5;
+    border-color: #0077b5;
+}
+
+.btn-social.linkedin:hover {
+    background-color: #006097;
 }
 
 .auth-switch {
     text-align: center;
-    margin-top: 2rem;
-    font-size: 0.95rem;
+    margin-top: 1.5rem;
 }
 
 .auth-switch a {
     color: var(--dangote-blue);
-    font-weight: 500;
     text-decoration: none;
+    font-weight: 500;
 }
+
 .modal {
     display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 1;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
 }
 
 .modal-content {
     background-color: white;
-    margin: 15% auto;
-    padding: 20px;
-    border-radius: 5px;
-    width: 80%;
-    max-width: 400px;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
     position: relative;
 }
 
 .close {
     position: absolute;
-    right: 15px;
-    top: 5px;
-    font-size: 24px;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
     cursor: pointer;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
     .auth-container {
         flex-direction: column;
     }
-
+    
     .auth-left {
         padding: 2rem;
     }
-
-    .auth-left h1 {
-        font-size: 2rem;
+    
+    .auth-left p {
+        max-width: 100%;
     }
-
+    
     .auth-form {
         padding: 2rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .auth-left,
-    .auth-right {
-        padding: 1.5rem;
-    }
-
-    .auth-form {
-        padding: 1.5rem;
     }
 }
